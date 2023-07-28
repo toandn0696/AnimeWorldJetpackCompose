@@ -15,9 +15,13 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 100
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
@@ -61,15 +65,7 @@ jobs:
         if: github.event_name == 'pull_request'
         run: ./gradlew clean detekt
 
-#      - name: Upload Artifact
-#        uses: actions/upload-artifact@v1
-#        if: github.event_name == 'pull_request'
-#        with:
-#          name: UnitTest-Artifact
-#          path: 'app/build/reports/'
-
       - name: Report github
-        if: github.event_name == 'pull_request'
         run: bundle exec danger --danger_id=check_style --dangerfile=Dangerfile
         env:
-          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
