@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalAnimationApi::class)
 
-package com.example.animeworldjetpackcompose
+package com.example.animeworldjetpackcompose.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
