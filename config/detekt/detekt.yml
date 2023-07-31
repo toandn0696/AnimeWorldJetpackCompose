@@ -73,6 +73,7 @@ complexity:
     active: true
     functionThreshold: 5
     constructorThreshold: 5
+    ignoreDefaultParameters: true
   LargeClass:
     active: true
     threshold: 150
@@ -234,7 +235,8 @@ naming:
     minimumFunctionNameLength: 3
   FunctionNaming:
     active: true
-    functionPattern: '^([a-z$][a-zA-Z$0-9]*)|(`.*`)$'
+    functionPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ignoreAnnotated: ['Composable']
   FunctionParameterNaming:
     active: true
     parameterPattern: '[a-z][A-Za-z0-9]*'
@@ -344,7 +346,7 @@ style:
       - '1'
       - '2'
     ignoreHashCodeFunction: false
-    ignorePropertyDeclaration: false
+    ignorePropertyDeclaration: true
     ignoreConstantDeclaration: true
     ignoreCompanionObjectPropertyDeclaration: true
     ignoreAnnotation: false

@@ -19,6 +19,8 @@ sealed class AppScreens(val route: String) {
 
     object Splash : AppScreens("splash_screen")
 
+    object Welcome : AppScreens("welcome_screen")
+
     fun routeWithArgsValue(vararg value: Pair<String, Any>): String {
         var routeArg = routeArgs()
         value.forEach {
