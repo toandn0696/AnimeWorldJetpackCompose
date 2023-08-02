@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -46,7 +47,7 @@ fun WelcomeScreen(onNextScreen: () -> Unit) {
     LaunchedEffect(
         key1 = currentPage.intValue,
     ) {
-        delay(1000)
+        delay(viewModel.getTimeDelayAutoSlidePager())
         pagerState.animateScrollToPage(
             currentPage.intValue + 1
         )
@@ -70,6 +71,11 @@ fun WelcomeScreen(onNextScreen: () -> Unit) {
             contentScale = ContentScale.Crop
         )
     }
+    bottomContent(itemCount = itemCount, pagerState = pagerState, onNextScreen)
+}
+
+@Composable
+internal fun bottomContent(itemCount: Int, pagerState: PagerState, onNextScreen: () -> Unit) {
     Box(
         Modifier.fillMaxSize()
     ) {

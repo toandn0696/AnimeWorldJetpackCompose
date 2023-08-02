@@ -9,6 +9,11 @@ import javax.inject.Inject
  **/
 @HiltViewModel
 class WelcomeVM @Inject constructor() : BaseViewModel() {
+
+    companion object {
+        private const val TIME_DELAY_AUTO_SLIDE_PAGER = 1000L
+    }
+
     private val listUrl =
         mutableListOf(
             "https://m.media-amazon.com/images/I/A1CB1w6rvKL.jpg",
@@ -20,4 +25,6 @@ class WelcomeVM @Inject constructor() : BaseViewModel() {
     internal fun getUrlImage(pos: Int) = listUrl[pos]
 
     internal fun getListUrl() = listUrl
+
+    internal fun getTimeDelayAutoSlidePager() = TIME_DELAY_AUTO_SLIDE_PAGER
 }
