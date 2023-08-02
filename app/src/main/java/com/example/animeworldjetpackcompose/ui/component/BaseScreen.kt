@@ -1,4 +1,4 @@
-package com.example.animeworldjetpackcompose.ui.companent
+package com.example.animeworldjetpackcompose.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

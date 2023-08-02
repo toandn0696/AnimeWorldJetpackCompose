@@ -61,7 +61,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     //Navigation
-    implementation("androidx.navigation:navigation-compose:2.6.0")
+    implementation("androidx.navigation:navigation-compose:2.7.0-alpha01")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.30.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
@@ -72,6 +72,9 @@ dependencies {
     //Hilt
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
 
     //Unit Test
     testImplementation("junit:junit:4.13.2")
