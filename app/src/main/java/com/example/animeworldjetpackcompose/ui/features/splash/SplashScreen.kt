@@ -11,7 +11,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.animeworldjetpackcompose.R
-import com.example.animeworldjetpackcompose.ui.companent.BaseScreen
+import com.example.animeworldjetpackcompose.ui.component.BaseScreen
 import kotlinx.coroutines.delay
 
 /**
@@ -22,7 +22,7 @@ import kotlinx.coroutines.delay
 @Composable
 fun SplashScreen(onNextScreen: () -> Unit) {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.animation_hello))
-    val viewModel :SplashViewModel = hiltViewModel()
+    val viewModel: SplashViewModel = hiltViewModel()
 
     LaunchedEffect(key1 = true) {
         delay(viewModel.getTimeDelay())

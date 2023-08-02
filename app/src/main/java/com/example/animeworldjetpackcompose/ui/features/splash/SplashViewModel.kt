@@ -10,7 +10,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor() : BaseViewModel() {
     companion object {
-        private const val TIME_DELAY = 5000L
+        private const val TIME_DELAY = 2000L
     }
 
     internal fun getTimeDelay() = TIME_DELAY

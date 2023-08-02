@@ -11,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.animeworldjetpackcompose.ui.features.splash.SplashScreen
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
+import com.example.animeworldjetpackcompose.ui.features.welcome.WelcomeScreen
 
 /**
  * @author mvn-toan.nguyen2 on 7/25/23
@@ -23,17 +24,18 @@ import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 @ExperimentalAnimationApi
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
-    val navController = rememberAnimatedNavController()
+    val navController = rememberNavController()
 //    val isShouldShowBottomBar =
 //        navController.currentBackStackEntryAsState().value?.destination?.route in (BottomBarTabs.values()
 //            .map { it.route })
     Scaffold { innerPadding ->
-        AnimatedNavHost(
+        NavHost(
             navController = navController,
             startDestination = AppScreens.Splash.route,
             modifier = modifier.padding(innerPadding)
         ) {
             addSplashScreen(navController)
+            addWelcomeScreen(navController)
         }
     }
 }
@@ -46,6 +48,14 @@ private fun NavGraphBuilder.addSplashScreen(navController: NavController) {
                     inclusive = true
                 }
             }
+        }
+    }
+}
+
+private fun NavGraphBuilder.addWelcomeScreen(navController: NavController) {
+    composable(route = AppScreens.Welcome.route) {
+        WelcomeScreen() {
+
         }
     }
 }
