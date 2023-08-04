@@ -43,7 +43,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.3.2"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
 }
 
@@ -75,6 +75,9 @@ dependencies {
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //Google services
+    implementation("com.google.android.gms:play-services-auth:20.6.0")
 
     //Unit Test
     testImplementation("junit:junit:4.13.2")

@@ -14,6 +14,8 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.animeworldjetpackcompose.ui.features.login.method.MethodLoginScreen
+import com.example.animeworldjetpackcompose.ui.features.login.register.RegisterScreen
 import com.example.animeworldjetpackcompose.ui.features.splash.SplashScreen
 import com.example.animeworldjetpackcompose.ui.features.welcome.WelcomeScreen
 
@@ -36,6 +38,8 @@ fun AppNavigation(modifier: Modifier = Modifier) {
         ) {
             addSplashScreen(navController)
             addWelcomeScreen(navController)
+            addMethodLoginScreen(navController)
+            addMethodRegisterScreen(navController)
         }
     }
 }
@@ -53,9 +57,32 @@ private fun NavGraphBuilder.addSplashScreen(navController: NavController) {
 }
 
 private fun NavGraphBuilder.addWelcomeScreen(navController: NavController) {
-    composable(route = AppScreens.Welcome.route) {
-        WelcomeScreen() {
+    composable(route = AppScreens.Welcome.route,
+        exitTransition = { defaultExitTransition() },
+        enterTransition = { defaultEnterTransition() },
+        popEnterTransition = { defaultPopEnterTransition() },
+        popExitTransition = { defaultPopExitTransition() }) {
+        WelcomeScreen(navController)
+    }
+}
 
-        }
+
+private fun NavGraphBuilder.addMethodLoginScreen(navController: NavController) {
+    composable(route = AppScreens.MethodLogin.route,
+        exitTransition = { defaultExitTransition() },
+        enterTransition = { defaultEnterTransition() },
+        popEnterTransition = { defaultPopEnterTransition() },
+        popExitTransition = { defaultPopExitTransition() }) {
+        MethodLoginScreen(navController)
+    }
+}
+
+private fun NavGraphBuilder.addMethodRegisterScreen(navController: NavController) {
+    composable(route = AppScreens.Register.route,
+        exitTransition = { defaultExitTransition() },
+        enterTransition = { defaultEnterTransition() },
+        popEnterTransition = { defaultPopEnterTransition() },
+        popExitTransition = { defaultPopExitTransition() }) {
+        RegisterScreen()
     }
 }
