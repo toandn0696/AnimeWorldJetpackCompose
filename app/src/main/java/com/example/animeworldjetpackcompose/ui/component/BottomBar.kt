@@ -15,6 +15,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.animeworldjetpackcompose.data.model.BottomBarTabs
+import com.example.animeworldjetpackcompose.ui.component.ConstantBottomBar.ALPHA_UNSELECT_ITEM
 import com.example.animeworldjetpackcompose.ui.navigations.AppScreens
 
 /**
@@ -47,7 +48,6 @@ fun BottomBar(navController: NavHostController) {
 fun RowScope.AddItem(
     screen: BottomBarTabs, currentDestination: NavDestination?, navController: NavHostController
 ) {
-    val alphaUnselectItem = 0.38f
 
     NavigationBarItem(
         label = {
@@ -59,10 +59,10 @@ fun RowScope.AddItem(
         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
         colors = NavigationBarItemDefaults.colors(
             unselectedIconColor = LocalContentColor.current.copy(
-                alpha = alphaUnselectItem
+                alpha = ALPHA_UNSELECT_ITEM
             ),
             unselectedTextColor = LocalContentColor.current.copy(
-                alpha = alphaUnselectItem
+                alpha = ALPHA_UNSELECT_ITEM
             )
         ),
         onClick = {
@@ -78,3 +78,6 @@ fun RowScope.AddItem(
         })
 }
 
+private object ConstantBottomBar {
+    const val ALPHA_UNSELECT_ITEM = 0.36f
+}
