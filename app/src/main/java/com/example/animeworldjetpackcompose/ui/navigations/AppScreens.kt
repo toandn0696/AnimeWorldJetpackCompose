@@ -22,6 +22,12 @@ sealed class AppScreens(val route: String) {
     object MethodLogin : AppScreens("method_login_screen")
     object Register : AppScreens("register_screen")
 
+    object Home : AppScreens("home_screen")
+
+    object Favorite : AppScreens("favorite_screen")
+
+    object Setting : AppScreens("setting_screen")
+
     fun routeWithArgsValue(vararg value: Pair<String, Any>): String {
         var routeArg = routeArgs()
         value.forEach {

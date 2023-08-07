@@ -13,9 +13,15 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.animeworldjetpackcompose.data.model.BottomBarTabs
+import com.example.animeworldjetpackcompose.ui.component.BottomBar
+import com.example.animeworldjetpackcompose.ui.features.favorite.FavoriteScreen
+import com.example.animeworldjetpackcompose.ui.features.home.HomeScreen
 import com.example.animeworldjetpackcompose.ui.features.login.method.MethodLoginScreen
 import com.example.animeworldjetpackcompose.ui.features.login.register.RegisterScreen
+import com.example.animeworldjetpackcompose.ui.features.settings.SettingsScreen
 import com.example.animeworldjetpackcompose.ui.features.splash.SplashScreen
 import com.example.animeworldjetpackcompose.ui.features.welcome.WelcomeScreen
 
@@ -27,10 +33,16 @@ import com.example.animeworldjetpackcompose.ui.features.welcome.WelcomeScreen
 @Composable
 fun AppNavigation(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-//    val isShouldShowBottomBar =
-//        navController.currentBackStackEntryAsState().value?.destination?.route in (BottomBarTabs.values()
-//            .map { it.route })
-    Scaffold { innerPadding ->
+    val isShouldShowBottomBar =
+        navController.currentBackStackEntryAsState().value?.destination?.route in (BottomBarTabs.values()
+            .map { it.route })
+    Scaffold(
+        bottomBar = {
+            if (isShouldShowBottomBar) {
+                BottomBar(navController = navController)
+            }
+        }
+    ) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = AppScreens.Splash.route,
@@ -40,6 +52,9 @@ fun AppNavigation(modifier: Modifier = Modifier) {
             addWelcomeScreen(navController)
             addMethodLoginScreen(navController)
             addMethodRegisterScreen(navController)
+            addHomeScreen(navController)
+            addFavoriteScreen(navController)
+            addSettingScreen(navController)
         }
     }
 }
@@ -47,7 +62,7 @@ fun AppNavigation(modifier: Modifier = Modifier) {
 private fun NavGraphBuilder.addSplashScreen(navController: NavController) {
     composable(route = AppScreens.Splash.route) {
         SplashScreen {
-            navController.navigate(AppScreens.Welcome.route) {
+            navController.navigate(AppScreens.Home.route) {
                 popUpTo(route = AppScreens.Splash.route) {
                     inclusive = true
                 }
@@ -84,5 +99,23 @@ private fun NavGraphBuilder.addMethodRegisterScreen(navController: NavController
         popEnterTransition = { defaultPopEnterTransition() },
         popExitTransition = { defaultPopExitTransition() }) {
         RegisterScreen()
+    }
+}
+
+private fun NavGraphBuilder.addHomeScreen(navController: NavController) {
+    composable(route = AppScreens.Home.route) {
+        HomeScreen()
+    }
+}
+
+private fun NavGraphBuilder.addFavoriteScreen(navController: NavController) {
+    composable(route = AppScreens.Favorite.route) {
+        FavoriteScreen()
+    }
+}
+
+private fun NavGraphBuilder.addSettingScreen(navController: NavController) {
+    composable(route = AppScreens.Setting.route) {
+        SettingsScreen()
     }
 }
