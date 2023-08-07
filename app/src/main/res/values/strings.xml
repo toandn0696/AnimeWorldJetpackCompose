@@ -8,4 +8,7 @@
     <string name="or">Or</string>
     <string name="placeholder_email">Enter Your Email</string>
     <string name="placeholder_password">Enter Your Password</string>
+    <string name="main_home">Home</string>
+    <string name="main_favorite">Favorite</string>
+    <string name="main_setting">Settings</string>
 </resources>
