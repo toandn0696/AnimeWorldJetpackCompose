@@ -18,8 +18,9 @@ sealed class AppScreens(val route: String) {
     }
 
     object Splash : AppScreens("splash_screen")
-
     object Welcome : AppScreens("welcome_screen")
+    object MethodLogin : AppScreens("method_login_screen")
+    object Register : AppScreens("register_screen")
 
     fun routeWithArgsValue(vararg value: Pair<String, Any>): String {
         var routeArg = routeArgs()

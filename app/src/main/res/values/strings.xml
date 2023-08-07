@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AnimeWorldJetpackCompose</string>
+    <string name="login_with_email">Login With Email</string>
+    <string name="login_with_facebook">Login With Facebook</string>
+    <string name="login_with_idpw">Login With IDPW</string>
+    <string name="not_having_account">Don\'t have an account? </string>
+    <string name="register">Register</string>
+    <string name="or">Or</string>
+    <string name="placeholder_email">Enter Your Email</string>
+    <string name="placeholder_password">Enter Your Password</string>
 </resources>
